@@ -14,33 +14,47 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import lombok.Getter;
 import lombok.Setter;
-@EnableJpaAuditing
+
 @Entity
 @Setter @Getter
-@Table(name="business_catagory")
-public class BusinessCatagory {
+@Table(name = "partner_details")
+public class PartnerDetails {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "businessCatagory_id", unique = true,nullable = false)
-	private Long businessCatagoryId;
+	@Column(name = "partner_details_id", unique = true, nullable = false)
+	private Long partnerDetailsId;
 	
-	@Column(name="businessCatagory_name")
-	private String businessCatagoryName;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "business_unit_Id")
+	private BusinessUnit businessUnit;
 	
-	@Column(name="businessCatagory_Description")
-	private String businessCatagoryDescription;
+	@Column(name = "partner_name")
+	private String partnerName;
+	
+	@Column(name="partner_contact_number")
+	private String partnerContactNumber;
+	
+	@Column(name="partner_address")
+	private String partnerAddress;
+	
+	@Column(name="partner_amount_invest")
+	private Integer partnerAmountInvest;
+	
+	@Column(name="partner_percentage")
+	private Integer partnerPercentage;
+	
+	@Column(name="duration")
+	private String duration;
+	
+	@Column(name="description")
+	private String description;
 	
 	@Column(name="active")
-	private String active;
-	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "contractor_id")
-	private Owner owner;
-	
+	private String active;	
 	@Column(name = "created_by")
 	private String createdBy;
 

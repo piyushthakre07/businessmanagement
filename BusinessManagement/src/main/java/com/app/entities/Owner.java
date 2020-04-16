@@ -16,30 +16,31 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Setter @Getter
+@Setter
+@Getter
 @Table(name = "owner_master")
 public class Owner {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "owner_id", unique = true,nullable = false)
+	@Column(name = "owner_id", unique = true, nullable = false)
 	private Long ownerId;
-	
-	@Column(name="owner_name")
+
+	@Column(name = "owner_name")
 	private String ownerName;
-	
+
 	@Column(name = "created_by")
 	private String createdBy;
 
 	@CreationTimestamp
 	@Column(name = "created_date")
 	private Date createdDate;
-	
+
 	@Column(name = "modify_by")
 	private String modifyBy;
-	
+
 	@UpdateTimestamp
 	@Column(name = "modify_date")
 	private Date modifyDate;
-	
 
 }

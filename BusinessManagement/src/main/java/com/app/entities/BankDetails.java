@@ -4,12 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -21,25 +18,34 @@ import lombok.Setter;
 @EnableJpaAuditing
 @Entity
 @Setter @Getter
-@Table(name="business_catagory")
-public class BusinessCatagory {
+@Table(name="bank_details")
+public class BankDetails {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "businessCatagory_id", unique = true,nullable = false)
-	private Long businessCatagoryId;
+	@Column(name = "bank_id", unique = true,nullable = false)
+	private Long bankId;
 	
-	@Column(name="businessCatagory_name")
-	private String businessCatagoryName;
+	@Column(name="payee_name")
+	private String payeeName;
 	
-	@Column(name="businessCatagory_Description")
-	private String businessCatagoryDescription;
+	@Column(name="bank_name")
+	private String bankName;
+	
+	@Column(name="account_number")
+	private Integer accountNumber;
+	
+	@Column(name="ifsc_code")
+	private String ifscCode;
+	
+	@Column(name="account_type")
+	private String accountType;
+	
+	@Column(name="bank_address")
+	private String bankAddress;
 	
 	@Column(name="active")
 	private String active;
-	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "contractor_id")
-	private Owner owner;
 	
 	@Column(name = "created_by")
 	private String createdBy;

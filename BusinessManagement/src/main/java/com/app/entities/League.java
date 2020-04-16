@@ -18,28 +18,37 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @EnableJpaAuditing
 @Entity
 @Setter @Getter
-@Table(name="business_catagory")
-public class BusinessCatagory {
+@Table(name="league")
+public class League {
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "businessCatagory_id", unique = true,nullable = false)
-	private Long businessCatagoryId;
+	@Column(name = "league_id", unique = true,nullable = false)
+	private Long leagueId;
 	
-	@Column(name="businessCatagory_name")
-	private String businessCatagoryName;
+	@Column(name="league_name")
+	private String leagueName;
 	
-	@Column(name="businessCatagory_Description")
-	private String businessCatagoryDescription;
+	@Column(name="league_type")
+	private Integer leagueType;
+	
+	@Column(name="contact_number")
+	private String contactNumber;
+	
+	@Column(name="address")
+	private String address;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "bank_id")
+	private BankDetails bankDetails;
 	
 	@Column(name="active")
 	private String active;
-	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "contractor_id")
-	private Owner owner;
 	
 	@Column(name = "created_by")
 	private String createdBy;
