@@ -1,4 +1,4 @@
-package com.app.model.master.service.impl;
+package com.app.module.master.service.impl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import com.app.beans.BusinessUnitBean;
 import com.app.entities.BusinessCatagory;
 import com.app.entities.BusinessUnit;
-import com.app.model.master.dao.IBusinessUnitDAO;
-import com.app.model.master.service.IBusinessUnitService;
+import com.app.module.master.dao.IBusinessUnitDAO;
+import com.app.module.master.service.IBusinessUnitService;
 
 @Service
 public class BusinessUnitService implements IBusinessUnitService{

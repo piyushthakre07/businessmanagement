@@ -1,4 +1,4 @@
-package com.app.model.master.service.impl;
+package com.app.module.master.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import com.app.beans.BusinessCatagoryBean;
 import com.app.beans.OwnerBean;
 import com.app.entities.BusinessCatagory;
 import com.app.entities.Owner;
-import com.app.model.master.dao.IBusinessCatagoryDao;
-import com.app.model.master.service.IbusinessCatagoryService;
+import com.app.module.master.dao.IBusinessCatagoryDao;
+import com.app.module.master.service.IbusinessCatagoryService;
 
 @Service
 public class BusinessCatagoryService implements IbusinessCatagoryService {

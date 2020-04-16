@@ -1,4 +1,4 @@
-package com.app.model.master.service;
+package com.app.module.master.service;
 
 import java.util.List;
 

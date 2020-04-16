@@ -58,7 +58,8 @@ public class InvestmentDetails {
 	private String description;
 	
 	@Column(name="active")
-	private String active;	
+	private String active;
+	
 	@Column(name = "created_by")
 	private String createdBy;
 

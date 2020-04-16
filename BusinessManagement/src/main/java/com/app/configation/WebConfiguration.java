@@ -23,7 +23,7 @@ public class WebConfiguration implements WebMvcConfigurer {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.app.model.master"))
+                .apis(RequestHandlerSelectors.basePackage("com.app.module.master"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metaData());

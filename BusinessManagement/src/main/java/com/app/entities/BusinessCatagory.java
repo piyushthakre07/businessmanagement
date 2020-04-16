@@ -38,7 +38,7 @@ public class BusinessCatagory {
 	private String active;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "contractor_id")
+	@JoinColumn(name = "owner_id")
 	private Owner owner;
 	
 	@Column(name = "created_by")

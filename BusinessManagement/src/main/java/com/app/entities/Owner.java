@@ -20,7 +20,7 @@ import lombok.Setter;
 @Getter
 @Table(name = "owner_master")
 public class Owner {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "owner_id", unique = true, nullable = false)
@@ -28,6 +28,9 @@ public class Owner {
 
 	@Column(name = "owner_name")
 	private String ownerName;
+
+	@Column(name = "active")
+	private String active;
 
 	@Column(name = "created_by")
 	private String createdBy;

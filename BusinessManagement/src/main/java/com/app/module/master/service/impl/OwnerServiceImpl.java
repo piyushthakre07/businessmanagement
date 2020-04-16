@@ -1,4 +1,4 @@
-package com.app.model.master.service.impl;
+package com.app.module.master.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.app.beans.OwnerBean;
 import com.app.entities.Owner;
-import com.app.model.master.dao.IOwnerDao;
-import com.app.model.master.service.IOwnerService;
+import com.app.module.master.dao.IOwnerDao;
+import com.app.module.master.service.IOwnerService;
 
 @Service
 public class OwnerServiceImpl implements IOwnerService {

@@ -1,4 +1,4 @@
-package com.app.model.master.controller;
+package com.app.module.master.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.beans.BusinessCatagoryBean;
 import com.app.beans.ResponseBean;
-import com.app.model.master.service.impl.BusinessCatagoryService;
+import com.app.module.master.service.impl.BusinessCatagoryService;
 import com.app.util.GenericConstant;
 
 import io.swagger.annotations.ApiOperation;

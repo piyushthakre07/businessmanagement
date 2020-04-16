@@ -1,4 +1,4 @@
-package com.app.model.master.dao;
+package com.app.module.master.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
