@@ -54,6 +54,10 @@ public class PartnerDetails {
 	@Column(name = "description")
 	private String description;
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "business_unit_Id")
+	private League league;
+
 	@Column(name = "active")
 	private String active;
 	@Column(name = "created_by")
