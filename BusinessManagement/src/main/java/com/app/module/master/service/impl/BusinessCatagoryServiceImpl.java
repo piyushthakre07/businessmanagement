@@ -15,7 +15,7 @@ import com.app.module.master.dao.IBusinessCatagoryDao;
 import com.app.module.master.service.IbusinessCatagoryService;
 
 @Service
-public class BusinessCatagoryService implements IbusinessCatagoryService {
+public class BusinessCatagoryServiceImpl implements IbusinessCatagoryService {
 	
 	@Autowired
 	IBusinessCatagoryDao businessCatagoryDao;
@@ -33,7 +33,6 @@ public class BusinessCatagoryService implements IbusinessCatagoryService {
 			owner.setOwnerId(businessCatagoryBean.getOwner().getOwnerId());
 			businessCatagory.setOwner(owner);
 			businessCatagoryDao.save(businessCatagory);
-
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

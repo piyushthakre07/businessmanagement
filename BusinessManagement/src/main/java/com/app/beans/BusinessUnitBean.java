@@ -11,4 +11,5 @@ public class BusinessUnitBean {
 	private String address;
 	private String description;
 	private String active;
+	private BankDetailsBean bankDetails;
 }

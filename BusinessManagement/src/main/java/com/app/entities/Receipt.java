@@ -50,7 +50,7 @@ public class Receipt {
 	@Column(name="amount")
 	private Integer amount;
 	
-	@Column(name="receipt_mode_details")
+	@Column(name="receipt_mode")
 	private String receiptMode;
 	
 	@Column(name="receipt_mode_details")

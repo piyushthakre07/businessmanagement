@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.beans.BusinessCatagoryBean;
 import com.app.beans.ResponseBean;
-import com.app.module.master.service.impl.BusinessCatagoryService;
+import com.app.module.master.service.impl.BusinessCatagoryServiceImpl;
 import com.app.util.GenericConstant;
 
 import io.swagger.annotations.ApiOperation;
@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/master/businessCatagory")
 public class BusinessCatagoryController {
 	@Autowired
-	BusinessCatagoryService businessCatagoryService;
+	BusinessCatagoryServiceImpl businessCatagoryService;
 
 	/**
 	 * @param businessCatagoryBean

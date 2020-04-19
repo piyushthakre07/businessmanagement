@@ -33,7 +33,7 @@ public class BankDetails {
 	private String bankName;
 	
 	@Column(name="account_number")
-	private Integer accountNumber;
+	private String accountNumber;
 	
 	@Column(name="ifsc_code")
 	private String ifscCode;

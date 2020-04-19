@@ -50,7 +50,7 @@ public class Payment {
 	@Column(name="amount")
 	private Integer amount;
 	
-	@Column(name="payment_mode_details")
+	@Column(name="payment_mode")
 	private String paymentMode;
 	
 	@Column(name="payment_mode_details")
