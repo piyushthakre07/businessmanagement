@@ -38,7 +38,7 @@ public class Payment {
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "league_id")
-	private League league;
+	private Ledger league;
 	
 	@Column(name="particular")
 	private String particular;

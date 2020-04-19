@@ -1,7 +1,7 @@
 package com.app.beans;
 
 import com.app.entities.BusinessUnit;
-import com.app.entities.League;
+import com.app.entities.Ledger;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ public class InvestmentdetailsBean {
 	private Integer amountInvest;
 	private Integer percentage;
 	private String duration;
-	private League payTo;
+	private Ledger payTo;
 	private String description;
 	private String active;
 }

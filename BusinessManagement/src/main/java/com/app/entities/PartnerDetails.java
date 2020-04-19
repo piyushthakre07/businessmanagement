@@ -56,7 +56,7 @@ public class PartnerDetails {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "league_id")
-	private League league;
+	private Ledger league;
 
 	@Column(name = "active")
 	private String active;

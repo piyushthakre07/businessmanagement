@@ -22,20 +22,18 @@ import lombok.Setter;
 @EnableJpaAuditing
 @Entity
 @Setter @Getter
-@Table(name="league")
-public class League {
-
-
+@Table(name="ledger")
+public class Ledger {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "league_id", unique = true,nullable = false)
-	private Long leagueId;
+	@Column(name = "ledger_id", unique = true,nullable = false)
+	private Long ledgerId;
 	
-	@Column(name="league_name")
-	private String leagueName;
+	@Column(name="ledger_name")
+	private String ledger_Name;
 	
-	@Column(name="league_type")
-	private Integer leagueType;
+	@Column(name="ledger_type")
+	private Integer ledgerType;
 	
 	@Column(name="contact_number")
 	private String contactNumber;

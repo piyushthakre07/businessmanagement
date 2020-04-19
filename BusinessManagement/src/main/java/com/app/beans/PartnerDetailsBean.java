@@ -1,7 +1,7 @@
 package com.app.beans;
 
 import com.app.entities.BusinessUnit;
-import com.app.entities.League;
+import com.app.entities.Ledger;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +16,6 @@ public class PartnerDetailsBean {
 	private Integer partnerPercentage;
 	private String duration;
 	private String description;
-	private League league;
+	private Ledger league;
 	private String active;
 }
