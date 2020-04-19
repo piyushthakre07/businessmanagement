@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.app.beans.BankDetailsBean;
 import com.app.entities.BankDetails;
 import com.app.module.master.dao.IBankDetailsDao;
@@ -20,7 +21,7 @@ public class BankDetailsServiceImpl implements IBankDetailsService {
 	@Override
 	public boolean insertBankDetails(BankDetailsBean bankDetailsBean) {
 		try {
-			BankDetails bankDetails= new BankDetails();
+			BankDetails bankDetails = new BankDetails();
 			BeanUtils.copyProperties(bankDetailsBean, bankDetails);
 			bankDetailsDao.save(bankDetails);
 			return true;
@@ -35,18 +36,18 @@ public class BankDetailsServiceImpl implements IBankDetailsService {
 		List<BankDetailsBean> bankDetailsBeanList;
 		try {
 			List<BankDetails> bankDetailsList = bankDetailsDao.findAll();
-			 bankDetailsBeanList = new ArrayList<BankDetailsBean>();
-			 bankDetailsList.stream().forEach(bankDetails->{
-				BankDetailsBean bankDetailsBean= new BankDetailsBean();
-				BeanUtils.copyProperties(bankDetailsBean, bankDetails);	
+			bankDetailsBeanList = new ArrayList<BankDetailsBean>();
+			bankDetailsList.stream().forEach(bankDetails -> {
+				BankDetailsBean bankDetailsBean = new BankDetailsBean();
+				BeanUtils.copyProperties(bankDetailsBean, bankDetails);
 				bankDetailsBeanList.add(bankDetailsBean);
-				});
-			 return bankDetailsBeanList;
+			});
+			return bankDetailsBeanList;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		}	
-		
+		}
+
 	}
 
 }
