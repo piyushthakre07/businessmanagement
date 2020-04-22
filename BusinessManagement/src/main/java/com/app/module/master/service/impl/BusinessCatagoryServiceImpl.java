@@ -27,9 +27,7 @@ public class BusinessCatagoryServiceImpl implements IbusinessCatagoryService {
 		try {
 			BusinessCatagory businessCatagory = new BusinessCatagory();
 			Owner owner = new Owner();
-			businessCatagory.setBusinessCatagoryName(businessCatagoryBean.getBusinessCatagoryName());
-			businessCatagory.setBusinessCatagoryDescription(businessCatagoryBean.getBusinessCatagoryName());
-			businessCatagory.setActive(businessCatagoryBean.getActive());
+			BeanUtils.copyProperties(businessCatagoryBean, businessCatagory);
 			owner.setOwnerId(businessCatagoryBean.getOwner().getOwnerId());
 			businessCatagory.setOwner(owner);
 			businessCatagoryDao.save(businessCatagory);

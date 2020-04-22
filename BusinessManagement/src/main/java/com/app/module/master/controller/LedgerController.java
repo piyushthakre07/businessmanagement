@@ -16,7 +16,7 @@ import com.app.module.master.service.ILedgerService;
 import com.app.util.GenericConstant;
 
 @RestController
-@RequestMapping(value = "/master/Ledger")
+@RequestMapping(value = "/master/ledger")
 public class LedgerController {
 	@Autowired
 	ILedgerService ledgerService;

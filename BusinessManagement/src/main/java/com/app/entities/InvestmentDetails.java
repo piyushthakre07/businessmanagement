@@ -50,7 +50,7 @@ public class InvestmentDetails {
 	@Column(name="duration")
 	private String duration;
 	
-	@Description("only League who  type is investment")
+	@Description("only Leadger who  type is investment")
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ledger_id")
 	private Ledger payTo;

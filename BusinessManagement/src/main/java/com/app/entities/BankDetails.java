@@ -15,49 +15,51 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @EnableJpaAuditing
 @Entity
-@Setter @Getter
-@Table(name="bank_details")
+@Setter
+@Getter
+@Table(name = "bank_details")
 public class BankDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "bank_id", unique = true,nullable = false)
+	@Column(name = "bank_id", unique = true, nullable = false)
 	private Long bankId;
-	
-	@Column(name="payee_name")
+
+	@Column(name = "payee_name", length = 15)
 	private String payeeName;
-	
-	@Column(name="bank_name")
+
+	@Column(name = "bank_name", length = 15)
 	private String bankName;
-	
-	@Column(name="account_number")
+
+	@Column(name = "account_number", length = 15)
 	private String accountNumber;
-	
-	@Column(name="ifsc_code")
+
+	@Column(name = "ifsc_code", length = 10)
 	private String ifscCode;
-	
-	@Column(name="account_type")
+
+	@Column(name = "account_type", length = 10)
 	private String accountType;
-	
-	@Column(name="bank_address")
+
+	@Column(name = "bank_address", length = 50)
 	private String bankAddress;
-	
-	@Column(name="active")
+
+	@Column(name = "active", length = 2)
 	private String active;
-	
-	@Column(name = "created_by")
+
+	@Column(name = "created_by", length = 10)
 	private String createdBy;
 
 	@CreationTimestamp
-	@Column(name = "created_date")
+	@Column(name = "created_date", length = 15)
 	private Date createdDate;
-	
-	@Column(name = "modify_by")
+
+	@Column(name = "modify_by", length = 10)
 	private String modifyBy;
-	
+
 	@UpdateTimestamp
-	@Column(name = "modify_date")
+	@Column(name = "modify_date", length = 15)
 	private Date modifyDate;
 }

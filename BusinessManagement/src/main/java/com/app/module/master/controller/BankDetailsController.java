@@ -30,7 +30,7 @@ public class BankDetailsController {
 						HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@GetMapping(value = "/DisplayAllBankDetails", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/displayAllBankDetails", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> DisplayAllBankDetails() {
 		try {
 	return new ResponseEntity<Object>(ResponseBean.builder().data(bankDetailsService.displayAllBankDetails()).message(GenericConstant.SUCCESS).status(true).build(),

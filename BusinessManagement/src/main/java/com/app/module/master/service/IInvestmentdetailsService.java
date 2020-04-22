@@ -2,11 +2,11 @@ package com.app.module.master.service;
 
 import java.util.List;
 
-import com.app.beans.InvestmentdetailsBean;
+import com.app.beans.InvestmentDetailsBean;
 
 public interface IInvestmentdetailsService {
-	public boolean insertInvestmentdetails(InvestmentdetailsBean investmentdetailsBean);
-	public List<InvestmentdetailsBean> displayAllInvestmentDetails();
+	public boolean insertInvestmentdetails(InvestmentDetailsBean investmentdetailsBean);
+	public List<InvestmentDetailsBean> displayAllInvestmentDetails();
 	
 
 }

@@ -49,15 +49,16 @@ public class LedgerServiceImpl implements ILedgerService {
 				BeanUtils.copyProperties(leadger, ledgerBean);
 				BankDetailsBean bankDetailsBean = new BankDetailsBean();
 				if(leadger.getBankDetails()!=null)
-				BeanUtils.copyProperties(leadger.getBankDetails(), bankDetailsBean);
+				BeanUtils.copyProperties(leadger.getBankDetails(),bankDetailsBean);
 				ledgerBean.setBankDetails(bankDetailsBean);
 				ledgerBeanList.add(ledgerBean);	
 			});
+			return ledgerBeanList;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-			return ledgerBeanList;
+			
 			}
 
 }

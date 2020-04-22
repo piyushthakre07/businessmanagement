@@ -30,7 +30,7 @@ public class BusinessUnitController {
 						HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
 	
-	@GetMapping(value="/displayAllBusinessUnit", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/displayAllBusinessUnits", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> displayAllBusinessUnit(){
 		try {
 			return new ResponseEntity<Object>(ResponseBean.builder().data(businessUnitService.displayAllBusinessUnits()).message(GenericConstant.SUCCESS).status(true).build(),HttpStatus.ACCEPTED);
