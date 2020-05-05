@@ -354,6 +354,5 @@
 	<!-- Custom Theme Scripts -->
 	<script src="/build/js/custom.js"></script>
 
-
 </body>
 </html>
