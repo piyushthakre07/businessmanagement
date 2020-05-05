@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Loan Details</title>
+<title>Add Lone Details</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Meta, title, CSS, favicons, etc. -->
@@ -88,13 +88,13 @@
 							}
 						}
 
-						$("#loanDetailsFormId")
+						$("#loneDetailsFormId")
 								.on(
 										"submit",
 										function(e) {
 											e.preventDefault();
 											var formData = $(
-													'#loanDetailsFormId')
+													'#loneDetailsFormId')
 													.serializeArray();
 											var s = '';
 											var data = {};
@@ -112,7 +112,7 @@
 											$
 													.ajax({
 														type : 'POST',
-														url : '/loan/loanDetails/insertLoanDetails',
+														url : '/lone/loneDetails/insertLoneDetails',
 														data : JSON
 																.stringify(data),
 														contentType : "application/json",
@@ -125,7 +125,7 @@
 																	.parse(resultSting);
 															if (jsonResult.status) {
 																alert(jsonResult.message);
-																window.location.href = "/loan/loanDetails/showLoanDetails";
+																window.location.href = "/lone/loneDetails/showLoneDetails";
 															}
 														},
 														error : function(result) {
@@ -157,19 +157,19 @@
 						<div class="x_panel">
 							<div class="x_title">
 								<h2>
-									Add Loan <small>Details</small>
+									Add Lone <small>Details</small>
 								</h2>
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
 								<br />
-								<form id="loanDetailsFormId"
+								<form id="loneDetailsFormId"
 									class="form-horizontal form-label-left">
 								<div class="form-group row ">
-										<label class="control-label col-md-3 col-sm-3 ">Loan Title<span class="required">*</span></label>
+										<label class="control-label col-md-3 col-sm-3 ">Lone Title<span class="required">*</span></label>
 										<div class="col-md-6 col-sm-9 ">
-											<input type="text" name="loanTitle"
-												class="form-control" placeholder="loan Title">
+											<input type="text" name="loneTitle"
+												class="form-control" placeholder="lone Title">
 										</div>
 									</div>
 
