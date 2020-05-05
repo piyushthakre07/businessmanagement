@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Construction Management! | </title>
+    <title>Business Management! | </title>
 
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
       <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"></i> <span>Construction Management!</span></a>
+              <a href="#" class="site_title"></i> <span>Business Management!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -55,7 +55,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Vijay</h2>
+                <h2>Rahul</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -79,7 +79,7 @@
                   </li>
                    <li><a><i class=""></i>Stock <span class=""></span></a>
                     <ul class="nav child_menu">
-                    <li><a href="/stock/viewItemWiseStock">Itemwise Stock</a></li>
+                    <li><a href="/stock/viewItemWiseStock">Item wise Stock</a></li>
                     </ul>
                   </li>
                    <li><a><i class=""></i>Purchase <span class=""></span></a>
@@ -93,22 +93,54 @@
                     <li><a href="#">Return Item</a></li>
                     </ul>
                   </li>
-                     <li><a><i class=""></i>User <span class=""></span></a>
+                   <li><a>Loan Management</a>
                     <ul class="nav child_menu">
-                    <li><a href="/user/addUser">Add User</a></li>
-                    <li><a href="/user/showUser">Show User</a></li>
+                       <li><a>Loan Details </a>
+                          <ul class="nav child_menu">
+                            <li><a href="/loan/loanDetails/addLoneDetails">Add Loan Details</a></li>
+                            <li><a href="/loan/loanDetails/showLoanDetails">Show Loan Details</a></li>
+                          </ul>
+                        </li>
+                   
+                  
+                    </ul>
+                  </li> 
+                  <li><a>Investment Management</a>
+                    <ul class="nav child_menu">
+                       <li><a>Investment Details </a>
+                          <ul class="nav child_menu">
+                            <li><a href="/investment/investmentdetails/addInvestmentDetails">Add Investment Details</a></li>
+                            <li><a href="/investment/investmentdetails/showInvestmentDetails">Show Investment Details</a></li>
+                          </ul>
+                        </li>
+                   
+                       <li><a>Investment Source </a>
+                          <ul class="nav child_menu">
+                              <li><a href="/investment/investmentdetails/addInvestmentSource">Add Investment Source</a></li>
+                              <li><a href="/investment/investmentdetails/showInvestmentSource">Show Investment Source</a></li>
+                          </ul>
+                        </li>
+                   
+                       <li><a>Manage Investments Amount </a>
+                          <ul class="nav child_menu">
+                              <li><a href="/investment/investmentdetails/addInvestmentSource">Add Investment Source</a></li>
+                              <li><a href="/investment/investmentdetails/showInvestmentSource">Show Investment Source</a></li>
+                          </ul>
+                        </li>
                     </ul>
                   </li>
                   <li><a><i class=""></i> Masters <span class=""></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/units/showUnits">Units Master</a></li>
-                      <li><a href="/materialcategory/showMaterialCategory">Material Category Master</a></li>
-                      <li><a href="/item/showItems">Items Master</a></li>
-                      <li><a href="/vendor/showVendor">Vendor Master</a></li>
-                      <li><a href="/role/showRole">Role Master</a></li>
+                      <li><a href="/master/owner/showOwner">Owner Master</a></li>
+                      <li><a href="/master/businessCatagory/showBusinessCatagory">BusinessCatagory Master</a></li>
+                       <li><a href="/master/bankDetails/showBankDetails">Bank Master</a></li>
+                      <li><a href="/master/businessUnit/showBusinessUnit">Business Unit Master</a></li>
+                      <li><a href="/master/ledger/showLedger">Ledger Master</a></li>
+                      <li><a href="/master/partnerDetailsController/showPartners">Partner Master</a></li>
+                      <li><a href="/master/paymentController/showPayment">Payment Master</a></li>
                       <!-- <li><a href="/user/showUser">User Master</a></li> -->
-                      <li><a href="/contractor/showContractor">Contractor Master</a></li>
-                      <li><a href="/sites/showSite">Sites Master</a></li>
+                      <li><a href="/master/receiptController/showReceipt">Receipt Master</a></li>
+
                     </ul>
                   </li>
                 <!--   <li><a><i class=""></i>Ghaphical Reports <span class=""></span></a>
@@ -150,7 +182,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="/images/img.jpg" alt="">Vijay
+                    <img src="/images/img.jpg" alt="">Rahul
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>

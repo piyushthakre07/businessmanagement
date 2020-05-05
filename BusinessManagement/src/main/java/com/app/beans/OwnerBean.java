@@ -7,6 +7,7 @@ import lombok.Setter;
 public class OwnerBean {
 	private Long ownerId;
 	private String ownerName;
+	private String active;
 	
 
 }

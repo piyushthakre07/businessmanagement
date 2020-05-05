@@ -20,39 +20,6 @@
 	rel="stylesheet">
 <!-- Custom Theme Style -->
 <link href="/build/css/custom.min.css" rel="stylesheet">
-<script>
-    $(document).ready(function() {
-    	getAllItems();
-
-    });
-    function  getAllItems()
-    		{
-    	    	 
-    	 $('#itemId').html('');
-    	    		      $.ajax({
-    	    		             url:'/item/getAllItems',
-    	    		             type:'GET',
-    	    		             dataType:'json',
-    	    		             contentType: "application/json",
-    	    		             success: function (data) {
-    	    		            	
-    	    		            	 $('#itemId').append('<option value="-1">Select</option>');
-    	    		            	 $.each(data,function(key,value){
-    	    		                          $('#itemId').append('<option value="'+value.itemId+'">'+value.itemName+'</option>');
-    	    		                    });
-    	    		             },
-    	    		             error:
-    	    		                function (data) {
-    	    		                   alert(JSON.stringify(data));
-    	    		             }
-    	    		       });
-    	    		
-    	
-    		}
- 
-    
-   
-    </script>
 </head>
 
 <body class="nav-md">
@@ -70,13 +37,13 @@
 						<div class="col-md-3 col-sm-4  tile_stats_count">
 							<span class="count_top"><i class=""></i> Total Contractor</span>
 							<div class="count">
-								<a href="/contractor/showContractor">${totalCount.contractorTtl}</a>
+								<a href="/contractor/showContractor"></a>
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-4  tile_stats_count">
 							<span class="count_top"><i class=""></i> Total Vendor</span>
 							<div class="count">
-								<a href="/vendor/showVendor">${totalCount.vendorTtl}</a>
+								<a href="/vendor/showVendor"></a>
 							</div>
 
 
@@ -84,64 +51,20 @@
 						<div class="col-md-3 col-sm-4  tile_stats_count">
 							<span class="count_top"><i class=""></i> Total Users</span>
 							<div class="count green">
-								<a href="/user/showUser">${totalCount.userTtl}</a>
+								<a href="/user/showUser"></a>
 							</div>
 
 						</div>
 						<div class="col-md-3 col-sm-4  tile_stats_count">
 							<span class="count_top"><i class=""></i> Total Sites</span>
 							<div class="count">
-								<a href="/sites/showSite">${totalCount.sitesTtl}</a>
+								<a href="/sites/showSite"></a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- /top tiles -->
-
-
 				<br />
-
-				<div class="row">
-					<div class="col-md-6 col-sm-4  ">
-						<div class="x_panel">
-							<div class="x_title">
-								<h2>Items In Stock</h2>
-								<div class="clearfix"></div>
-							</div>
-							<div class="x_content">
-
-								<div id="echart_pie" style="height: 350px;"></div>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6 col-sm-4  ">
-						<div class="x_panel">
-							<div class="x_title">
-								<h2>Item Stock</h2>
-
-								<div class="clearfix"></div>
-							</div>
-							<div class="x_content">
-								<!-- <div class="form-group row">
-										<label class="control-label col-md-3 col-sm-3 ">Select
-											Items</label>
-										<div class="col-md-6 col-sm-9 ">
-											<select name="item.itemId" id="itemId" class="select2_single form-control"
-												tabindex="-1">
-												<option value="-1">Select</option>
-											</select>
-
-										</div>
-									</div> -->
-								<div id="echart_gauge" style="height: 370px;"></div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
 				<!-- footer content -->
 				<footer>
 					<div class="pull-right"></div>

@@ -28,8 +28,8 @@ public class BankDetails {
 	@Column(name = "bank_id", unique = true, nullable = false)
 	private Long bankId;
 
-	@Column(name = "payee_name", length = 15)
-	private String payeeName;
+	@Column(name = "bank_account_title", length = 15)
+	private String bankAccountTitle;
 
 	@Column(name = "bank_name", length = 15)
 	private String bankName;

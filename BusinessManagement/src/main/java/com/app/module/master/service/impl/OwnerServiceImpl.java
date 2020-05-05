@@ -22,7 +22,7 @@ public class OwnerServiceImpl implements IOwnerService {
 	public boolean insertOrUpdateOwner(OwnerBean ownerBean) {
 		try {
 			Owner owner = new Owner();
-			owner.setOwnerName(ownerBean.getOwnerName());
+			BeanUtils.copyProperties(ownerBean, owner);
 			ownerDao.save(owner);
 			return true;
 		} catch (Exception e) {

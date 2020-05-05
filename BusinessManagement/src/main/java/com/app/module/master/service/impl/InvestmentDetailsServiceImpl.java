@@ -29,13 +29,15 @@ public class InvestmentDetailsServiceImpl implements IInvestmentdetailsService {
 			BeanUtils.copyProperties(investmentDetailsBean, investmentDetails);
 			BusinessUnit businessUnit = new BusinessUnit();
 			System.out.println(investmentDetailsBean.getBusinessUnit().getBusinessUnitID());
-			if (investmentDetailsBean.getBusinessUnit().getBusinessUnitID()!= null)
+			if (investmentDetailsBean.getBusinessUnit() != null
+					&& investmentDetailsBean.getBusinessUnit().getBusinessUnitID() != null)
 				businessUnit.setBusinessUnitID(investmentDetailsBean.getBusinessUnit().getBusinessUnitID());
 			investmentDetails.setBusinessUnit(businessUnit);
 			Ledger ledger = new Ledger();
-			if (investmentDetailsBean.getPayTo().getLedgerId() != null)
+			if (investmentDetailsBean.getPayTo() != null && investmentDetailsBean.getPayTo().getLedgerId() != null) {
 				ledger.setLedgerId(investmentDetailsBean.getPayTo().getLedgerId());
-			investmentDetails.setPayTo(ledger);
+				investmentDetails.setPayTo(ledger);
+			}
 			investmentDetailsDao.save(investmentDetails);
 			return true;
 		} catch (BeansException e) {

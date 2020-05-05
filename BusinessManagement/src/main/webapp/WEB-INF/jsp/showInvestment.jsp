@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>ConstructionManagement! | </title>
+    <title>Business Management! | </title>
 <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">		
 <!--  <script src="/js/jquery-3.3.1.min.js"></script>
@@ -27,46 +27,43 @@
 
 <script>
 $(document).ready(function () {
-	var	consumptionTable;
-	consumptionDatatableTable();
-	function consumptionDatatableTable(){
-		consumptionTable = $('#consumptionTable').DataTable({
+	var	investmentTable;
+	investmentDatatableTable();
+	function investmentDatatableTable(){
+		investmentTable = $('#investmentTable').DataTable({
 	"ajax": {
-	"url": "/consumption/getAllConsumption",
+	"url": "/investment/investmentdetails/displayAllInvestmentDetails",
 	"type": "GET",
 	async:false,
 	"contentType": "application/json; charset=utf-8",
 	},
 	"columns": [             
-	{ "data": "consumptionDateString","bSortable":true, "class":"text-wrap"},
-	{ "data": "contractor.contractorName", "width": "350px", "class":"text-wrap"},
-	{ "data": "sites.siteName","className":'',"bSortable":true},
-	{ "data": "sites.siteAddress","bSortable":true, "class":"text-wrap"},
-	{ "data": "materialCategory.materialCategoryName", "width": "350px", "class":"text-wrap"},
-	{ "data": "item.itemName","bSortable":true, "class":"text-wrap"},
-	{ "data": "item.unit.unitName", "width": "350px", "class":"text-wrap"},
-	{ "data": "consumptionQuantity","bSortable":true, "class":"text-wrap"},
-	{ "data": "approveBy.fullName", "width": "350px", "class":"text-wrap"},
-	{ "data": "workType","bSortable":true, "class":"text-wrap"},
+	{ "data": "businessUnit.unitName","bSortable":true, "class":"text-wrap"},
+	{ "data": "totalInvestAmount", "width": "350px", "class":"text-wrap"},
+	{ "data": "amountInvest","className":'',"bSortable":true},
+	{ "data": "percentage","bSortable":true, "class":"text-wrap"},
+	{ "data": "duration", "width": "350px", "class":"text-wrap"},
+	{ "data": "description","bSortable":true, "class":"text-wrap"},
+	{ "data": "active", "width": "350px", "class":"text-wrap"},
 	{ "data": "remark","bSortable":true, "class":"text-wrap"},
 	],
 	dom: 'Bfrtip',
     buttons: [
     	  {
     	        extend: 'copyHtml5',
-    	        title: 'Material Consumption Details'
+    	        title: 'Investment Details'
     	    },
     	    {
     	        extend: 'excelHtml5',
-    	        title: 'Material Consumption Details'
+    	        title: 'Investment Details'
     	    },
     	    {
     	        extend: 'csvHtml5',
-    	        title: 'Material Consumption Details'
+    	        title: 'Investment Details'
     	    },
     	    {
     	        extend: 'pdfHtml5',
-    	        title: 'Material Consumption Details'
+    	        title: 'Investment Details'
     	    }
     ],
     
@@ -81,7 +78,7 @@ $(document).ready(function () {
 	"paging":true,
 	"aaSorting": [[ 0, "desc" ]],
 	"pageLength": 5,
-	"bLengthChange": false,
+	"bLengthChange": true,
 	"ordering": true,
 	"pagingType": "simple",
 	"oLanguage": {
@@ -115,31 +112,29 @@ $(document).ready(function () {
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Material Consumption Details</h2>
+                    <h2> Show Investment Details</h2>
                     <div class="clearfix"></div>
                   </div>
-                  <table id="consumptionTable"  class="table table-striped jambo_table bulk_action"> 
+                  
+                  <a href="/investment/investmentdetails/addInvestmentDetails"><div class="btn btn-round btn-success">Add Investment Details</div></a>
+                 
+                  <table id="investmentTable"  class="table table-striped jambo_table bulk_action"> 
 		           <thead>
-		     
 		            <tr>
-		               
-		                <th>Date</th>
-		                <th>Contractor Name</th>
-		                <th>Site Name</th>
-		                <th>Site Address</th>
-		                <th>Material Category Name</th>
-		                <th>Item Name</th>
-		                <th>Unit</th>
-		                <th>Quantity</th>
-		                <th>Approve By</th>
-		                <th>Work Type</th>
+		                <th>Business Unit</th>
+		                <th>Total Amount</th>
+		                <th>Amount Investment By Us</th>
+		                <th>Our Percentage</th>
+		                <th>Duration In Month</th>
+		                <th>Description</th>
 		                <th>Remark</th>
+		                <th>Active</th>
 		            </tr>
 		          </thead>
                   </table>
                   <div class="x_content">
                     <div class="table-responsive">
-					<div id="consumptionTableContainer"></div>
+					<div id="investmentTableContainer"></div>
 				</div>
 				</div>
                 </div>
@@ -162,16 +157,16 @@ $(document).ready(function () {
     <!-- jQuery -->
 
     <!-- Bootstrap -->
-   <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->
-    <script src="../../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="../../../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="/vendors/nprogress/nprogress.js"></script>
+    <script src="..//vendors/nprogress/nprogress.js"></script>
     <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <script src="../../vendors/iCheck/icheck.min.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="../../build/js/custom.min.js"></script>
 
   </body>
 </html>

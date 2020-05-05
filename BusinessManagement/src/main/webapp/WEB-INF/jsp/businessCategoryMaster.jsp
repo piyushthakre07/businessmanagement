@@ -8,94 +8,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Construction Management! | </title>
-
+    <title>Business Management! | </title>
 		
  <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function () {
-	 var objectDataUnits=[];
-	 var objectDataMaterialCategory=[];
-	 var globle=true;
+	
+ var objectDataRole=[];
+	 
 	 firstFunction();
 	function firstFunction(){
 	 $.ajax({
         type: 'GET',
         contentType: "application/json; charset=utf-8",
-        url: '/units/getAllUnits',
+        url: '/master/owner/displayAllOwners',
         dataType: "json",
 	}).done(function(data) {
 		 $.each(data,function(key,value){
         	 var objectData={};
-    		 objectData['Name']=value.unitName;
-    		 objectData['Id']=value.unitId;
-    		 objectDataUnits.push(objectData);
+    		 objectData['Name']=value.ownerName;
+    		 objectData['Id']=value.ownerId;
+    		 objectDataRole.push(objectData);
     		
         	 });
 		 secondFunction();
 	});
 	}
-	function secondFunction(){
-		
-		 $.ajax({
-	        type: 'GET',
-	        contentType: "application/json; charset=utf-8",
-	        url: '/materialcategory/getallmaterialcategory',
-	        dataType: "json",
-		}).done(function(data) {
-			 $.each(data,function(key,value){
-	        	 var objectData={};
-	        	 objectData['Name']=value.materialCategoryName;
-	        	 objectData['Id']=value.materialCategoryId;
-	        	 objectDataMaterialCategory.push(objectData);
-	    		
-	        	 });
-			 thridFunction();
-		});
-		}
 	
-	function thridFunction(){
-	$("#itemTableContainer").jsGrid({
-	       width: "100%",
+	var status = [
+        { Name: "", Id: "" },
+        { Name: "Active", Id:"Y" },
+        { Name: "Inactive", Id: "N" }
+    ];
+	
+	function secondFunction(){
+	$("#businessCategoryTableContainer").jsGrid({
+		 width: "100%",
 	       filtering: true,
 	       editing: true,
 	       sorting: true,
 	       paging: true,
 	       autoload: true,
 	       inserting: true,
-	       deleting:true,
-	       clearFilterButton: true,  
-	       pageSize: 5,
+	       deleting:false,
+	       pageSize: 10,
 	       pageButtonCount: 5,
+	       deleteButton:false,
 	       controller: {
 	           loadData: function(filter) {
 	           	var d = $.Deferred();
 	               $.ajax({
 	                   type: 'GET',
 	                   contentType: "application/json; charset=utf-8",
-	                   url: '/item/getAllItems',
+	                   url: '/master/businessCatagory/displayAllBusinessCatagory',
 	                   dataType: "json",
 	                   data:filter,
 	                     success: function (data) {
+	                    	
 	                     	var data1 = $.grep(data, function(data) {
-	                            return (!filter.itemName || (data.itemName+'').toUpperCase().indexOf(filter.itemName.toUpperCase()) > -1)
+	                            return (!filter.businessCategoryName || (data.businessCategoryName+'').toUpperCase().indexOf(filter.businessCategoryName.toUpperCase()) > -1)
 	                       });   
                    	d.resolve(data1);
+                   
 	                   },
 	                   error: function(e) {
 	                       alert("error: " + e.responseText);
 	                   } 
 	                  
 	               });
+	              
 	                return d.promise();
 	           },
-	    
-	    
 	         insertItem: function(insertingClient) {
 	    	       $.ajax({
 	    	                   type: 'POST',
-	    	                   url: '/item/saveItems',
+	    	                   url: '/master/businessCatagory/insertBusinessCatagory',
 	    	                   dataType: "json",
 	    	                   contentType: 'application/json',
 	    	                   data: JSON.stringify(insertingClient),
@@ -106,11 +94,11 @@ $(document).ready(function () {
 	    	   	});
 	    	       
 	    	   },
-	    	  
+
 	    	   updateItem: function(updatingClient) {
 	    	   	$.ajax({
 	    	                   type: 'PUT',
-	    	                   url: '/item/updateItems',
+	    	                   url: '/master/businessCatagory/updateBusinessCatagory',
 	    	                   dataType: "json",
 	    	                   contentType: 'application/json',
 	    	                   data: JSON.stringify(updatingClient),
@@ -124,8 +112,8 @@ $(document).ready(function () {
 
 	    	   deleteItem: function(deletingClient) {
 	    	   	$.ajax({
-	    	                   type: 'DELETE',
-	    	                   url: '/item/deleteItems/'+deletingClient.itemId,
+	    	                   type: 'PUT',
+	    	                   url: '/master/businessCatagory/updateBusinessCategory',
 	    	                   dataType: "json",
 	    	                   contentType: 'application/json',
 	    	                   success: function (data) {
@@ -136,23 +124,28 @@ $(document).ready(function () {
 	    	   }
 	    	  
 	       },
-	   
 	       fields: [
-	    	       { name: "itemId", type: "hidden",  width:75, title: "Item Id"},
-		           { name: "itemName", type: "text",  width:75, title: "Item Name"},
-		           { name: "unit.unitId", type: "select", items:objectDataUnits, valueField: "Id",textField: "Name", width:75, title: "Unit Id"},
-		          { name: "materialCategory.materialCategoryId",
-		        	   type: "select", items:objectDataMaterialCategory, valueField: "Id" ,textField: "Name",
-		        	   width:75, title: "Material Category"  
-		           },
+	    	       { name: "businessCatagoryId", type: "hidden",  width:75, title: "BusinessCategory Id"},
+		           { name: "businessCatagoryName", type: "text",  width:75, title: "BusinessCategory Name"},
+		           { name: "businessCatagoryDescription", type: "text",  width:75, title: "Business Catagory Description"},
+		           { name: "active", type: "select", items:status, valueField: "Id",textField: "Name",  width:75, title: "Active"},
+		           { name: "owner.ownerId", type: "select", items:objectDataRole, valueField: "Id",textField: "Name",  width:75, title: "Owner"},
 		           { type: "control" } 
 		       ]
+	       
 		       });
-			
-	}
+	
+	}	
+	
 	
 }); 
 
+
+
+$( window ).on( "load", function() {
+	$(".jsgrid-delete-button").hide();
+});
+ 
 </script>
   </head>
 
@@ -172,14 +165,14 @@ $(document).ready(function () {
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Items<small>Master</small></h2>
+                    <h2>Business Category <small>Master</small></h2>
                     <div class="clearfix"></div>
                   </div>
-                 
+                  
                   
                   <div class="x_content">
                     <div class="table-responsive">
-					<div id="itemTableContainer"></div>
+					<div id="businessCategoryTableContainer"></div>
 				</div>
 				</div>
                 </div>
@@ -202,9 +195,9 @@ $(document).ready(function () {
     <!-- jQuery -->
 
     <!-- Bootstrap -->
-   <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="../../build/js/custom.min.js"></script>
 
 	<script src="../../jsgrid/jsgrid.core.js"></script>
 <script src="../../jsgrid/jsgrid.load-indicator.js"></script>

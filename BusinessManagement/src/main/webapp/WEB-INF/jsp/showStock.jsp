@@ -13,54 +13,6 @@
  <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
-$(document).ready(function () {
-	$("#stockTableContainer").jsGrid({
-	       width: "100%",
-	       filtering: true,
-	       editing: false,
-	       sorting: true,
-	       paging: true,
-	       autoload: true,
-	       inserting: false,
-	       deleting:false,
-	       editButton: false,                               // show edit button
-	       deleteButton: false,                             // show delete button
-	       clearFilterButton: false,                        // show clear filter button
-	       modeSwitchButton: false,   
-	       pageSize: 5,
-	       pageButtonCount: 5,
-	       controller: {
-	           loadData: function(filter) {
-	           	var d = $.Deferred();
-	               $.ajax({
-	                   type: 'GET',
-	                   contentType: "application/json; charset=utf-8",
-	                   url: '/stock/getItemWiseStock',
-	                   dataType: "json",
-	                   data:filter,
-	                     success: function (data) {
-	                     	var data1 = $.grep(data, function(data) {
-	                            return (!filter.stockName || (data.stockName+'').toUpperCase().indexOf(filter.stockName.toUpperCase()) > -1)
-	                       });   
-                   	d.resolve(data1);
-	                   },
-	                   error: function(e) {
-	                       alert("error: " + e.responseText);
-	                   } 
-	                  
-	               });
-	                return d.promise();
-	           },
-	        
-	       },
-	       fields: [
-		           { name: "itemName", type: "hidden",   title: "Item Name"},
-		           { name: "itemQuantity", type: "hidden",   title: "Quantity"},
-		           { name: "unitName", type: "hidden",   title: "Unit"}
-		       ]
-	
-}); 
-});
 
 </script>
   </head>

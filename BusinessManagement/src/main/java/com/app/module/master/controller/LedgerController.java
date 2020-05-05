@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.LedgerBean;
 import com.app.beans.ResponseBean;
@@ -20,6 +21,13 @@ import com.app.util.GenericConstant;
 public class LedgerController {
 	@Autowired
 	ILedgerService ledgerService;
+	
+	@GetMapping(value = "/showLedger", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showLedger() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/LedgerMaster");
+		return mv;
+	}
 
 	@PostMapping(value = "/insertLedger", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> insertLedger(@RequestBody LedgerBean ledgerBean) {

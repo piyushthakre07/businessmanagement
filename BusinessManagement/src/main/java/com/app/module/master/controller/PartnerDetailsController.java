@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.app.beans.PartnerDetailsBean;
 import com.app.beans.ResponseBean;
 import com.app.module.master.service.IPartnerDetailsService;
@@ -21,6 +23,12 @@ public class PartnerDetailsController {
 	@Autowired
 	IPartnerDetailsService partnerDetailsService;
 
+	@GetMapping(value = "/showPartners", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showLedger() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/PartnerMaster");
+		return mv;
+	}
 	@PostMapping(value = "/insertPartnerDetails", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> insertLedger(@RequestBody PartnerDetailsBean partnerDetailsBean) {
 		return partnerDetailsService.insertPartnerDetails(partnerDetailsBean)

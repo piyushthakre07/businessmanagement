@@ -11,38 +11,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.app.beans.PaymentBean;
+import com.app.beans.ReceiptBean;
 import com.app.beans.ResponseBean;
-import com.app.module.master.service.IPaymentService;
+import com.app.module.master.service.IReceiptService;
 import com.app.util.GenericConstant;
 
 @RestController
-@RequestMapping("/master/paymentController")
-public class PaymentController {
+@RequestMapping(value="/master/receiptController")
+public class ReceiptController {
 	@Autowired
-	IPaymentService PaymentService;
+	IReceiptService receiptService;
 	
-	@GetMapping(value = "/showPayment", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ModelAndView showPayment() {
+	@GetMapping(value = "/showReceipt", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showReceipt() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/PaymentMaster");
+		mv.setViewName("/ReceiptMaster");
 		return mv;
 	}
 	
 
-	@PostMapping(value = "/insertPayment", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> insertPayment(@RequestBody PaymentBean paymentBean) {
-		return PaymentService.insertPayment(paymentBean)
+	@PostMapping(value ="/insertReceipt", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> insertReceipt(@RequestBody ReceiptBean receiptBean) {
+		return receiptService.insertReceipt(receiptBean)
 				? new ResponseEntity<Object>(ResponseBean.builder().message(GenericConstant.SUCCESS).status(true)
 						.messageDescription(GenericConstant.INSERT_SUCCESS).build(), HttpStatus.CREATED)
 				: new ResponseEntity<Object>(ResponseBean.builder().message(GenericConstant.FAIL).status(false),
 						HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@GetMapping(value = "/displayAllPayments", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> displayAllPayments() {
+	@GetMapping(value = "/displayAllReceipts", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> displayAllReceipts() {
 		try {
-			return new ResponseEntity<Object>(ResponseBean.builder().data(PaymentService.displayPayments())
+			return new ResponseEntity<Object>(ResponseBean.builder().data(receiptService.DisplayAllReceipts())
 					.message(GenericConstant.SUCCESS).status(true).build(), HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(

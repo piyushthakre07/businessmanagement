@@ -19,41 +19,58 @@ import org.springframework.data.rest.core.annotation.Description;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @EnableJpaAuditing
 @Entity
 @Setter @Getter
-@Table(name="investment_details")
-public class InvestmentDetails {
+@Table(name="loan_details")
+public class LoanDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "investment_id", unique = true,nullable = false)
-	private Long investmentId;
+	@Column(name = "loan_id", unique = true,nullable = false)
+	private Long loanId;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "business_unit_Id")
-	private BusinessUnit businessUnit;
-	
-	@Description("total  investment including partner")
-	@Column(name="total_invest_amount")
-	private Integer totalInvestAmount;
-	
-	@Description("total amount invested by owner")
-	@Column(name="amount_invest")
-	private Integer amountInvest;
-	
-	@Description("Percentage owned by us")
-	@Column(name="percentage")
-	private Integer percentage;
-	
-	@Description("duration in month")
-	@Column(name="duration")
-	private String duration;
-	
-	@Description("only Leadger who  type is investment")
+	@Column(name="loan_title")
+	private String loanTitle;
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ledger_id")
-	private Ledger payTo;
+	private Ledger loanFromLeadger;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "bank_id")
+	private BankDetails loanReceiveIntoBank;
+	
+	@Column(name="loan_amount")
+	private Long loanAmount;
+	
+	@Column(name="tenure")
+	private Integer tenure;
+	
+	@Description("Monthly or Yearly")
+	@Column(name="installment_frequency")
+	private String installmentFrequency;
+	
+	@Column(name="rate_of_interest")
+	private Integer rateOfInterest;
+
+	@Description("Total Interest Paid")
+	@Column(name="total_interest_paid_amount")
+	private Long totalInterestPaid;
+	
+	@Column(name="emi_amount_per_month")
+	private Long emiAmountPerMonth;
+	
+	@Column(name="payment_mode")
+	private String paymentMode;
+	
+	@Column(name="emi_start_date")
+	private String emiStartDate;
+	
+	@Description("emi paid day of month")
+	@Column(name="due_on")
+	private Integer dueOn;
 	
 	@Column(name="description")
 	private String description;

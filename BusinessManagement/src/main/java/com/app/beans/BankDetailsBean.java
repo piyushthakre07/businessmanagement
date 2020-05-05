@@ -6,7 +6,7 @@ import lombok.Setter;
 @Setter @Getter
 public class BankDetailsBean {
 	private Long bankId;
-	private String payeeName;
+	private String bankAccountTitle;
 	private String bankName;
 	private String accountNumber;
 	private String ifscCode;

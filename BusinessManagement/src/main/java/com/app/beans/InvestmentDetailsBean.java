@@ -15,4 +15,5 @@ public class InvestmentDetailsBean {
 	private LedgerBean payTo;
 	private String description;
 	private String active;
+	private String remark;
 }

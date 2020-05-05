@@ -18,61 +18,51 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import lombok.Getter;
 import lombok.Setter;
-
 @EnableJpaAuditing
 @Entity
-@Table(name ="receipt")
 @Setter @Getter
-public class Receipt {
+@Table(name="investment_details")
+public class InvestmentSourceDetails {
 
 	@Id
-	@Column(name = "receipt_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long receiptId;
-	
-	@Column(name="year")
-	private String year;
-	
-	@Column(name="month")
-	private String month;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "league_id")
-	private Ledger ledger;
-	
-	@Column(name="particular")
-	private String particular;
+	@Column(name = "investment_source_details_id", unique = true,nullable = false)
+	private Long investmentSourceDetailsId;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "business_unit_Id")
 	private BusinessUnit businessUnit;
 	
-	@Column(name="amount")
-	private Integer amount;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "loan_id")
+	private LoanDetails loanDetails;
 	
-	@Column(name="receipt_mode")
-	private String receiptMode;
+	@Column(name="investment_date")
+	private String investmentDate;
 	
-	@Column(name="receipt_mode_details")
-	private String receiptModeDetails;
+	@Column(name="investment_type")
+	private String investmentType;
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "bank_id")
-	private BankDetails bankDetails;
+	@Column(name="description")
+	private String description;
 	
-
+	@Column(name="active")
+	private String active;
+	
+	@Column(name="remark")
+	private String remark;
+	
 	@Column(name = "created_by")
 	private String createdBy;
 
 	@CreationTimestamp
 	@Column(name = "created_date")
 	private Date createdDate;
-
+	
 	@Column(name = "modify_by")
 	private String modifyBy;
-
+	
 	@UpdateTimestamp
 	@Column(name = "modify_date")
 	private Date modifyDate;
-	
 }

@@ -8,13 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>ConstructionManagement! | </title>
+    <title>Business Management! | </title>
 		
  <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function () {
-	$("#unitsTableContainer").jsGrid({
+	var status = [
+        { Name: "", Id: "" },
+        { Name: "Active", Id:"Y" },
+        { Name: "Inactive", Id: "N" }
+    ];
+	$("#jsGrid").find(".jsgrid-mode-button").click();
+	$("#ownerTableContainer").jsGrid({
+		
 	       width: "100%",
 	       filtering: true,
 	       editing: true,
@@ -22,35 +29,39 @@ $(document).ready(function () {
 	       paging: true,
 	       autoload: true,
 	       inserting: true,
-	       deleting:true,
-	       pageSize: 5,
+	       deleting:false,
+	       pageSize: 10,
 	       pageButtonCount: 5,
+	       deleteButton:false,
 	       controller: {
 	           loadData: function(filter) {
 	           	var d = $.Deferred();
 	               $.ajax({
 	                   type: 'GET',
 	                   contentType: "application/json; charset=utf-8",
-	                   url: '/units/getAllUnits',
+	                   url: '/master/owner/displayAllOwners',
 	                   dataType: "json",
 	                   data:filter,
 	                     success: function (data) {
+	                    	
 	                     	var data1 = $.grep(data, function(data) {
-	                            return (!filter.unitName || (data.unitName+'').toUpperCase().indexOf(filter.unitName.toUpperCase()) > -1)
+	                            return (!filter.ownerName || (data.ownerName+'').toUpperCase().indexOf(filter.ownerName.toUpperCase()) > -1)
 	                       });   
                    	d.resolve(data1);
+                   
 	                   },
 	                   error: function(e) {
 	                       alert("error: " + e.responseText);
 	                   } 
 	                  
 	               });
+	              
 	                return d.promise();
 	           },
 	         insertItem: function(insertingClient) {
 	    	       $.ajax({
 	    	                   type: 'POST',
-	    	                   url: '/units/saveUnits',
+	    	                   url: '/master/owner/insertOwner',
 	    	                   dataType: "json",
 	    	                   contentType: 'application/json',
 	    	                   data: JSON.stringify(insertingClient),
@@ -65,7 +76,7 @@ $(document).ready(function () {
 	    	   updateItem: function(updatingClient) {
 	    	   	$.ajax({
 	    	                   type: 'PUT',
-	    	                   url: '/units/updateUnits',
+	    	                   url: '/master/owner/updateOwner',
 	    	                   dataType: "json",
 	    	                   contentType: 'application/json',
 	    	                   data: JSON.stringify(updatingClient),
@@ -79,8 +90,8 @@ $(document).ready(function () {
 
 	    	   deleteItem: function(deletingClient) {
 	    	   	$.ajax({
-	    	                   type: 'DELETE',
-	    	                   url: '/units/deleteUnits/'+deletingClient.unitId,
+	    	                   type: 'PUT',
+	    	                   url: '/master/owner/updateOwner',
 	    	                   dataType: "json",
 	    	                   contentType: 'application/json',
 	    	                   success: function (data) {
@@ -91,18 +102,23 @@ $(document).ready(function () {
 	    	   }
 	    	  
 	       },
-	   
 	       fields: [
-	    	       { name: "unitId", type: "hidden",  width:75, title: "Unit Id"},
-		           { name: "unitName", type: "text",  width:75, title: "Unit Name"},
-		           { type: "control" } 
+	    	       { name: "ownerId", type: "hidden",  width:75, title: "Owner Id"},
+		           { name: "ownerName", type: "text",  width:75, title: "Owner Name"},
+		           { name: "active", type: "select", items:status, valueField: "Id",textField: "Name",  width:75, title: "Active"},
+		    	   { type: "control" } 
 		       ]
+	       
 		       });
-			
+	
 	
 	
 }); 
 
+$( window ).on( "load", function() {
+	$(".jsgrid-delete-button").hide();
+});
+ 
 </script>
   </head>
 
@@ -122,14 +138,14 @@ $(document).ready(function () {
               <div class="col-md-12 col-sm-12  ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Unit <small>Master</small></h2>
+                    <h2>Owner <small>Master</small></h2>
                     <div class="clearfix"></div>
                   </div>
                   
                   
                   <div class="x_content">
                     <div class="table-responsive">
-					<div id="unitsTableContainer"></div>
+					<div id="ownerTableContainer"></div>
 				</div>
 				</div>
                 </div>
@@ -152,9 +168,9 @@ $(document).ready(function () {
     <!-- jQuery -->
 
     <!-- Bootstrap -->
-   <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="../../build/js/custom.min.js"></script>
 
 	<script src="../../jsgrid/jsgrid.core.js"></script>
 <script src="../../jsgrid/jsgrid.load-indicator.js"></script>
