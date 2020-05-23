@@ -16,7 +16,6 @@
 $(document).ready(function () {
 	
  var objectDataRole=[];
-	 
 	 firstFunction();
 	function firstFunction(){
 	 $.ajax({
@@ -127,10 +126,10 @@ $(document).ready(function () {
 	       fields: [
 	    	       { name: "ledgerId", type: "hidden",  width:75, title: "Ledger Id"},
 		           { name: "ledgerName", type: "text",  width:75, title: "Ledger Name"},
-		           { name: "ledgerType", type: "number",  width:75, title: "Ledger Type"},
+		           { name: "ledgerType", type: "text",  width:75, title: "Ledger Type"},
 		           { name: "contactNumber", type: "text",  width:75, title: "Contact Number"},
 		           { name: "address", type: "text",  width:75, title: "Address"},
-		          { name: "active", type: "select", items:status, valueField: "Id",textField: "Name",  width:75, title: "Active"},
+		           { name: "active", type: "select", items:status, valueField: "Id",textField: "Name",  width:75, title: "Active"},
 		           { name: "bankDetails.bankId", type: "select", items:objectDataRole, valueField: "Id",textField: "Name",  width:75, title: "Bank Details"},
 		           { type: "control" } 
 		       ]
@@ -141,8 +140,6 @@ $(document).ready(function () {
 	
 }); 
 
-
- 
 </script>
   </head>
 

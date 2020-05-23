@@ -42,6 +42,10 @@
 	$("#installmentFrquency").change(function() {
 		calculateTotalLoanAmount();
 	});
+	
+	$("#dueOn").change(function() {
+		$("#dueOnValue").html($("#dueOn").val());
+	});
 
 						function calculateTotalInterest() {
 							
@@ -51,7 +55,7 @@
 							var rateOfInterest = parseFloat($("#rateOfInterest").val());
 							if (principal != "" && year!="" && rateOfInterest!="") {
 							var interest = (principal * year * rateOfInterest) / 100;
-							 $('#totalInterestPaid').val(interest);
+							 $('#totalInterestPaid').val(interest.toFixed(2));
 							 calculateTotalLoanAmount();
 							
 							}
@@ -75,8 +79,8 @@
 								emiAmount=parseFloat((totalLoanAmount/tenure)*3);	
 							if(installmentFrquency=="YEARLY")
 								emiAmount=parseFloat((totalLoanAmount/tenure)*12);	
-							$("#totalLoanAmount").html(totalLoanAmount);
-							$("#emiAmountPerMonth").val(emiAmount);
+							$("#totalLoanAmount").html(totalLoanAmount.toFixed(2));
+							$("#emiAmountPerMonth").val(emiAmount.toFixed(2));
 							}
 						}
 						
@@ -84,7 +88,7 @@
 
 							if ($("#tenure").val() != "") {
 								var year = $("#tenure").val() / 12;
-								return parseFloat(year);
+								return parseFloat(year.toFixed(2));
 							}
 						}
 
@@ -171,6 +175,7 @@
 											<input type="text" name="loanTitle"
 												class="form-control" placeholder="loan Title">
 										</div>
+										
 									</div>
 
 									<div class="form-group row">
@@ -203,17 +208,26 @@
 							
 									<div class="form-group row ">
 										<label class="control-label col-md-3 col-sm-3 ">Loan Amount</label>
+										
 										<div class="col-md-6 col-sm-9 ">
-											<input type="number" name="loanAmount" id="loanAmount"
+											<input type="text" name="loanAmount" id="loanAmount"
 												class="form-control" placeholder="Enter Loan Amount">
 										</div>
+										
 									</div>
 									<div class="form-group row ">
 										<label class="control-label col-md-3 col-sm-3 ">Tenure in month</label>
 										<div class="col-md-6 col-sm-9 ">
-											<input type="number" name="tenure" id="tenure"
+											<input type="text" name="tenure" id="tenure"
 												class="form-control" placeholder="Enter Tenure in month">
 										</div><div id="tenureYear"></div>
+									</div>
+									<div class="form-group row ">
+										<label class="control-label col-md-3 col-sm-3 ">Rate Of Interest</label>
+										<div class="col-md-6 col-sm-9 ">
+											<input type="text" name="rateOfInterest" id="rateOfInterest"
+												class="form-control" placeholder="Rate Of Interest">
+										</div>
 									</div>
 									<div class="form-group row ">
 										<label class="control-label col-md-3 col-sm-3 ">Installment Frequency</label>
@@ -228,13 +242,7 @@
 											</select>
 										</div>
 									</div>
-										<div class="form-group row ">
-										<label class="control-label col-md-3 col-sm-3 ">Rate Of Interest</label>
-										<div class="col-md-6 col-sm-9 ">
-											<input type="number" name="rateOfInterest" id="rateOfInterest"
-												class="form-control" placeholder="Rate Of Interest">
-										</div>
-									</div>
+										
 										<div class="form-group row ">
 										<label class="control-label col-md-3 col-sm-3 ">Total Interest Paid</label>
 										<div class="col-md-6 col-sm-9 ">
@@ -251,7 +259,7 @@
 										<div class="form-group row ">
 										<label class="control-label col-md-3 col-sm-3 ">EMI Amount</label>
 										<div class="col-md-6 col-sm-9 ">
-											<input type="number" name="emiAmountPerMonth" id="emiAmountPerMonth"
+											<input type="text" name="emiAmountPerMonth" id="emiAmountPerMonth"
 												class="form-control" placeholder="EMI Amount">
 										</div>
 									</div>
@@ -278,13 +286,15 @@
 									<div class="form-group row ">
 										<label class="control-label col-md-3 col-sm-3 ">Due on</label>
 											<div class="col-md-6 col-sm-9 ">
-											<select name="dueOn" id="dueOn"
+											<input type="range" id="dueOn" name="dueOn" min="1" max="28">
+											<%-- <select name="dueOn" id="dueOn"
 												class="select2_single form-control" tabindex="-1">
 												<option value="-1">Select</option>
 												<c:forEach var="i" begin="1" end="28">
 													<option value="${i}">${i}</option>
 												</c:forEach>
-											</select>
+											</select> --%>
+											<div id="dueOnValue"></div>
 										</div>
 									</div>
 									<div class="form-group row ">
@@ -301,7 +311,7 @@
 											<textarea name="remark"></textarea>
 										</div>
 									</div>
-									<div class="form-group row">
+								<!-- 	<div class="form-group row">
 										<label class="control-label col-md-3 col-sm-3 ">Select
 											Active</label>
 										<div class="col-md-6 col-sm-9 ">
@@ -313,7 +323,22 @@
 									
 											</select>
 										</div>
-									</div>
+									</div> -->
+									<div class="form-group row">
+										<label class="control-label col-md-3 col-sm-3 ">Select
+											Active</label>
+											  <div class="col-md-6 col-sm-6 ">
+                          <div id="gender" class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="active" value="Active" class="join-btn"> &nbsp; Active &nbsp;
+                            </label>
+                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="active" value="Inactive" class="join-btn"> Inactive
+                            </label>
+                          </div>
+                        </div>
+					</div>
+					
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-sm-9  offset-md-3">
@@ -350,7 +375,6 @@
 	<!-- ECharts -->
 	<script src="/build/js/echarts.min.js"></script>
 	<script src="/vendors/echarts/map/js/world.js"></script>
-
 	<!-- Custom Theme Scripts -->
 	<script src="/build/js/custom.js"></script>
 

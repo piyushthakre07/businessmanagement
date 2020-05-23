@@ -44,7 +44,7 @@ public class LoanDetailsController {
 	@GetMapping(value = "/showLoanDetails", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ModelAndView viewLoanDetails() {
 		ModelAndView mv=new ModelAndView();
-        mv.setViewName("/showInvestment");
+        mv.setViewName("/showLoanDetails");
 		return mv;
 	}
 	

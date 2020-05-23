@@ -15,23 +15,23 @@ public class LoanDetailsBean {
 
 	private BankDetailsBean loanReceiveIntoBank;
 
-	private Long loanAmount;
+	private String loanAmount;
 
-	private Integer tenure;
+	private String tenure;
 
 	private String installmentFrequency;
 
-	private Integer rateOfInterest;
+	private String rateOfInterest;
 
-	private Long totalInterestPaid;
+	private String totalInterestPaid;
 
-	private Long emiAmountPerMonth;
+	private String emiAmountPerMonth;
 
 	private String paymentMode;
 
 	private String emiStartDate;
 
-	private Integer dueOn;
+	private String dueOn;
 
 	private String description;
 

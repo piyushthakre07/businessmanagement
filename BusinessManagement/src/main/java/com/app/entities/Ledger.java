@@ -33,7 +33,7 @@ public class Ledger {
 	private String ledgerName;
 	
 	@Column(name="ledger_type")
-	private Integer ledgerType;
+	private String ledgerType;
 	
 	@Column(name="contact_number")
 	private String contactNumber;

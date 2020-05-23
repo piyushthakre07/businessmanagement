@@ -8,6 +8,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.beans.BankDetailsBean;
+import com.app.beans.LedgerBean;
 import com.app.beans.LoanDetailsBean;
 import com.app.entities.BankDetails;
 import com.app.entities.Ledger;
@@ -53,6 +55,16 @@ public class LoanDetailsServiceImpl implements ILoanDetailsService {
 			loanDetailsList.stream().forEach(loanDetail -> {
 				LoanDetailsBean loanDetailsBean = new LoanDetailsBean();
 				BeanUtils.copyProperties(loanDetail, loanDetailsBean);
+				if (loanDetail.getLoanFromLeadger() != null) {
+					LedgerBean loanFromLeadgerBean = new LedgerBean();
+					BeanUtils.copyProperties(loanDetail.getLoanFromLeadger(), loanFromLeadgerBean);
+					loanDetailsBean.setLoanFromLeadger(loanFromLeadgerBean);
+				}
+				if (loanDetail.getLoanReceiveIntoBank() != null) {
+					BankDetailsBean loanReceiveIntoBankBean = new BankDetailsBean();
+					BeanUtils.copyProperties(loanDetail.getLoanReceiveIntoBank(), loanReceiveIntoBankBean);
+					loanDetailsBean.setLoanReceiveIntoBank(loanReceiveIntoBankBean);
+				}
 				loanDetailsBeanList.add(loanDetailsBean);
 			});
 			return loanDetailsBeanList;

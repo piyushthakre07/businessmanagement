@@ -14,7 +14,7 @@
     <!-- Bootstrap -->
     <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Font Awesome -->
-      <link href="/css/font-awesome.min.css" rel="stylesheet">
+      <link href="/../css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="/css/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
@@ -28,6 +28,7 @@
     <link href="/css/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
+     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link href="/build/css/custom.css" rel="stylesheet">
     	<link rel="stylesheet" type="text/css" href="/jsgrid/demos/demos.css" />
 
@@ -36,6 +37,25 @@
 	<!-- GOOGLE FONTS-->
 	<link href='/jsgrid/jquery-ui.css' rel='stylesheet'
 		type='text/css' />
+		<!-- Added for fond display -->
+		 <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    
+    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../../build/css/custom.min.css" rel="stylesheet">
+  <!--   End added for font -->
 		
     <!-- <script src="/js/jquery-3.3.1.min.js"></script> -->
 <script src="/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
@@ -43,7 +63,7 @@
       <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"></i> <span>Business Management!</span></a>
+              <a href="#" class="site_title"><span>Business Management!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -67,35 +87,44 @@
               <div class="menu_section">
                
                 <ul class="nav side-menu">
-                  <li><a  href="/home/dashboard"><i class=""></i> Home <span ></span></a>
+                  <li><a  href="/home/dashboard"><i class="fa fa-home"></i> Home <span ></span></a>
                    
                   </li>
-                   <li><a><i class=""></i> Item Consumption <span class=""></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="/consumption/addConsumption">Add Item Consumption</a></li>
-                       <li><a href="/consumption/viewConsumption">Item Consumption Details</a></li>
-                      <li><a href="/consumption/viewDateWiseConsumption">Datewise Consumption Reports</a></li>
-                    </ul>
-                  </li>
-                   <li><a><i class=""></i>Stock <span class=""></span></a>
-                    <ul class="nav child_menu">
-                    <li><a href="/stock/viewItemWiseStock">Item wise Stock</a></li>
-                    </ul>
-                  </li>
-                   <li><a><i class=""></i>Purchase <span class=""></span></a>
+                  
+                   <li><a><i class=""></i>Purchase<span class="fa fa-chevron-down"></span> <span class=""></span></a>
                     <ul class="nav child_menu">
                     <li><a href="/purchase/addPurchaseItem">Add Purchase Item</a></li>
                     <li><a href="/purchase/viewPurchaseItem">Show Purchase Item</a></li>
                     </ul>
                   </li>
-                    <li><a><i class=""></i>Return <span class=""></span></a>
+                   <li><a> Account <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                    <li><a href="#">Return Item</a></li>
+                       <li><a>Ledger <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li><a href="/master/ledger/addLedger">Add Ledger Details</a></li>
+                            <li><a href="/master/ledger/displayAllLedgers">Ledger Details</a></li>
+                          </ul>
+                        </li>
+                   
+                       <li><a>Investment Source <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                              <li><a href="/investment/investmentdetails/addInvestmentSource">Add Investment Source</a></li>
+                              <li><a href="/investment/investmentdetails/showInvestmentSource">Show Investment Source</a></li>
+                          </ul>
+                        </li>
+                   
+                       <li><a>Manage Investments Amount <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                              <li><a href="/investment/investmentdetails/addInvestmentSource">Add Investment Source</a></li>
+                              <li><a href="/investment/investmentdetails/showInvestmentSource">Show Investment Source</a></li>
+                          </ul>
+                        </li>
                     </ul>
                   </li>
-                   <li><a>Loan Management</a>
+                  
+                   <li><a>Loan Management <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                       <li><a>Loan Details </a>
+                       <li><a>Loan Details <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li><a href="/loan/loanDetails/addLoneDetails">Add Loan Details</a></li>
                             <li><a href="/loan/loanDetails/showLoanDetails">Show Loan Details</a></li>
@@ -105,23 +134,23 @@
                   
                     </ul>
                   </li> 
-                  <li><a>Investment Management</a>
+                  <li><a>Investment Management <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                       <li><a>Investment Details </a>
+                       <li><a>Investment Details <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                             <li><a href="/investment/investmentdetails/addInvestmentDetails">Add Investment Details</a></li>
                             <li><a href="/investment/investmentdetails/showInvestmentDetails">Show Investment Details</a></li>
                           </ul>
                         </li>
                    
-                       <li><a>Investment Source </a>
+                       <li><a>Investment Source <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                               <li><a href="/investment/investmentdetails/addInvestmentSource">Add Investment Source</a></li>
                               <li><a href="/investment/investmentdetails/showInvestmentSource">Show Investment Source</a></li>
                           </ul>
                         </li>
                    
-                       <li><a>Manage Investments Amount </a>
+                       <li><a>Manage Investments Amount <span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
                               <li><a href="/investment/investmentdetails/addInvestmentSource">Add Investment Source</a></li>
                               <li><a href="/investment/investmentdetails/showInvestmentSource">Show Investment Source</a></li>
@@ -129,7 +158,7 @@
                         </li>
                     </ul>
                   </li>
-                  <li><a><i class=""></i> Masters <span class=""></span></a>
+                  <li><a><i class=""></i> Masters <span class="fa fa-chevron-down"></span><span class=""></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/master/owner/showOwner">Owner Master</a></li>
                       <li><a href="/master/businessCatagory/showBusinessCatagory">BusinessCatagory Master</a></li>
@@ -177,7 +206,9 @@
         <!-- top navigation -->
         <div class="top_nav">
           <div class="nav_menu">
-             
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
               <nav class="nav navbar-nav">
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">

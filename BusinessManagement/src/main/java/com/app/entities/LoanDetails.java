@@ -34,33 +34,33 @@ public class LoanDetails {
 	@Column(name="loan_title")
 	private String loanTitle;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ledger_id")
 	private Ledger loanFromLeadger;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "bank_id")
 	private BankDetails loanReceiveIntoBank;
 	
 	@Column(name="loan_amount")
-	private Long loanAmount;
+	private String loanAmount;
 	
 	@Column(name="tenure")
-	private Integer tenure;
+	private String tenure;
 	
 	@Description("Monthly or Yearly")
 	@Column(name="installment_frequency")
 	private String installmentFrequency;
 	
 	@Column(name="rate_of_interest")
-	private Integer rateOfInterest;
+	private String rateOfInterest;
 
 	@Description("Total Interest Paid")
 	@Column(name="total_interest_paid_amount")
-	private Long totalInterestPaid;
+	private String totalInterestPaid;
 	
 	@Column(name="emi_amount_per_month")
-	private Long emiAmountPerMonth;
+	private String emiAmountPerMonth;
 	
 	@Column(name="payment_mode")
 	private String paymentMode;
@@ -70,7 +70,7 @@ public class LoanDetails {
 	
 	@Description("emi paid day of month")
 	@Column(name="due_on")
-	private Integer dueOn;
+	private String dueOn;
 	
 	@Column(name="description")
 	private String description;
