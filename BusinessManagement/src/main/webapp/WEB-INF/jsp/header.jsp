@@ -165,10 +165,10 @@
                        <li><a href="/master/bankDetails/showBankDetails">Bank Master</a></li>
                       <li><a href="/master/businessUnit/showBusinessUnit">Business Unit Master</a></li>
                       <li><a href="/master/ledger/showLedger">Ledger Master</a></li>
-                      <li><a href="/master/partnerDetailsController/showPartners">Partner Master</a></li>
+                   <!--    <li><a href="/master/partnerDetailsController/showPartners">Partner Master</a></li>
                       <li><a href="/master/paymentController/showPayment">Payment Master</a></li>
-                      <!-- <li><a href="/user/showUser">User Master</a></li> -->
-                      <li><a href="/master/receiptController/showReceipt">Receipt Master</a></li>
+                      <li><a href="/user/showUser">User Master</a></li>
+                      <li><a href="/master/receiptController/showReceipt">Receipt Master</a></li> -->
 
                     </ul>
                   </li>
