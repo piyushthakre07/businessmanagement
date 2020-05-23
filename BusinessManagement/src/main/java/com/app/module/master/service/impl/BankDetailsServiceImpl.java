@@ -33,13 +33,12 @@ public class BankDetailsServiceImpl implements IBankDetailsService {
 
 	@Override
 	public List<BankDetailsBean> displayAllBankDetails() {
-		List<BankDetailsBean> bankDetailsBeanList;
+		List<BankDetails> bankDetailsList = bankDetailsDao.findAll();
+		List<BankDetailsBean> bankDetailsBeanList= new ArrayList<BankDetailsBean>();
 		try {
-			List<BankDetails> bankDetailsList = bankDetailsDao.findAll();
-			bankDetailsBeanList = new ArrayList<BankDetailsBean>();
-			bankDetailsList.stream().forEach(bankDetails -> {
+			bankDetailsList.stream().forEach(bankDetails->{
 				BankDetailsBean bankDetailsBean = new BankDetailsBean();
-				BeanUtils.copyProperties(bankDetailsBean, bankDetails);
+				BeanUtils.copyProperties(bankDetails, bankDetailsBean);
 				bankDetailsBeanList.add(bankDetailsBean);
 			});
 			return bankDetailsBeanList;

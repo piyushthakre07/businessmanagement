@@ -6,9 +6,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.BusinessCatagoryBean;
 import com.app.beans.ResponseBean;
@@ -22,8 +24,17 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping("/master/businessCatagory")
 public class BusinessCatagoryController {
+	
 	@Autowired
 	BusinessCatagoryServiceImpl businessCatagoryService;
+	
+	@GetMapping(value = "/showBusinessCatagory", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showBusinessCatagory() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/businessCategoryMaster");
+		return mv;
+	}
+	
 
 	/**
 	 * @param businessCatagoryBean
@@ -50,13 +61,29 @@ public class BusinessCatagoryController {
 	@GetMapping(value = "/displayAllBusinessCatagory", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> displayAllBusinessCatagory() {
 		try {
-			return new ResponseEntity<Object>(
-					ResponseBean.builder().data(businessCatagoryService.displayAllBusinessCatagory())
-							.message(GenericConstant.SUCCESS).status(true).build(),
-					HttpStatus.ACCEPTED);
+			/*
+			 * return new ResponseEntity<Object>(
+			 * ResponseBean.builder().data(businessCatagoryService.
+			 * displayAllBusinessCatagory())
+			 * .message(GenericConstant.SUCCESS).status(true).build(), HttpStatus.ACCEPTED);
+			 */
+			return new ResponseEntity<>(businessCatagoryService.displayAllBusinessCatagory(), HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Object>(ResponseBean.builder().message(GenericConstant.FAIL).status(false).build(),
-					HttpStatus.INTERNAL_SERVER_ERROR);
+			/*
+			 * return new ResponseEntity<Object>(
+			 * ResponseBean.builder().message(GenericConstant.FAIL).status(false).build(),
+			 * HttpStatus.INTERNAL_SERVER_ERROR);
+			 */
+			return new ResponseEntity<>("Fail", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	
+	@PutMapping(value = "/updateBusinessCatagory", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> updateBusinessCatagory(@RequestBody BusinessCatagoryBean businessCatagoryBean) {
+		return businessCatagoryService.insertBusinessCatagory(businessCatagoryBean)
+				? new ResponseEntity<Object>(ResponseBean.builder().message(GenericConstant.SUCCESS).status(true)
+						.messageDescription(GenericConstant.UPDATE_SUCCESS).build(), HttpStatus.CREATED)
+				: new ResponseEntity<Object>(ResponseBean.builder().message(GenericConstant.FAIL).status(false).build(),
+						HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

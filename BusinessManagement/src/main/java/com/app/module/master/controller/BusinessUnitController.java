@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.app.beans.BusinessUnitBean;
 import com.app.beans.ResponseBean;
@@ -21,6 +22,14 @@ public class BusinessUnitController {
 	@Autowired
 	IBusinessUnitService businessUnitService;
 	
+	@GetMapping(value = "/showBusinessUnit", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView showBusinessUnit() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/businessUnit");
+		return mv;
+	}
+	
+	
 	@PostMapping(value = "/insertBusinessUnit",produces =MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object>addBusinessUnit(@RequestBody BusinessUnitBean businessUnitBean){
 		return businessUnitService.insertBusinessUnit(businessUnitBean)
@@ -30,15 +39,34 @@ public class BusinessUnitController {
 						HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
 	
-	@GetMapping(value="/displayAllBusinessUnit", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/displayAllBusinessUnits", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> displayAllBusinessUnit(){
-		try {
-			return new ResponseEntity<Object>(ResponseBean.builder().data(businessUnitService.displayAllBusinessUnits()).message(GenericConstant.SUCCESS).status(true).build(),HttpStatus.ACCEPTED);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			 return new ResponseEntity<Object>(ResponseBean.builder().message(GenericConstant.FAIL).status(true),HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		/*
+		 * try { return new
+		 * ResponseEntity<Object>(ResponseBean.builder().data(businessUnitService.
+		 * displayAllBusinessUnits()).message(GenericConstant.SUCCESS).status(true).
+		 * build(),HttpStatus.ACCEPTED); } catch (Exception e) { e.printStackTrace();
+		 * return new
+		 * ResponseEntity<Object>(ResponseBean.builder().message(GenericConstant.FAIL).
+		 * status(true),HttpStatus.INTERNAL_SERVER_ERROR); }
+		 */
 			
+		try {
+			return new ResponseEntity<>(businessUnitService.displayAllBusinessUnits(), HttpStatus.OK);
+			/*
+			 * return new ResponseEntity<Object>(ResponseBean.builder().data(ownerService.
+			 * displayAllOwners()).status(true) .message(GenericConstant.SUCCESS).build(),
+			 * HttpStatus.ACCEPTED);
+			 */
+		} catch (Exception e) {
+			/*
+			 * return new ResponseEntity<Object>(ResponseBean.builder().data(ownerService.
+			 * displayAllOwners()).status(false) .message(GenericConstant.FAIL).build(),
+			 * HttpStatus.INTERNAL_SERVER_ERROR);
+			 * 
+			 */
+			return new ResponseEntity<>("Fail", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	
 }
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.app.beans.BankDetailsBean;
 import com.app.beans.BusinessCatagoryBean;
 import com.app.beans.BusinessUnitBean;
+import com.app.entities.BankDetails;
 import com.app.entities.BusinessCatagory;
 import com.app.entities.BusinessUnit;
 import com.app.module.master.dao.IBusinessUnitDAO;
@@ -28,8 +29,13 @@ public class BusinessUnitServiceImpl implements IBusinessUnitService{
 		BusinessUnit businessUnit= new BusinessUnit();
 		BusinessCatagory businessCatagory = new BusinessCatagory();
 		BeanUtils.copyProperties(businessUnitBean, businessUnit);
-		BeanUtils.copyProperties(businessUnitBean.getBusinessCatagory(),businessCatagory );
+		if(businessUnitBean.getBusinessCatagory().getBusinessCatagoryId()!=null)
+		businessCatagory.setBusinessCatagoryId(businessUnitBean.getBusinessCatagory().getBusinessCatagoryId());
 		businessUnit.setBusinessCatagory(businessCatagory);
+		BankDetails bankDetails= new BankDetails();
+		if(businessUnitBean.getBankDetails().getBankId()!=null)
+		bankDetails.setBankId(businessUnitBean.getBankDetails().getBankId());
+		businessUnit.setBankDetails(bankDetails);
 		businessUnitDAO.save(businessUnit);	
 		return true;
 		}catch(Exception e) {
@@ -54,7 +60,7 @@ public class BusinessUnitServiceImpl implements IBusinessUnitService{
 				if (businessUnit.getBusinessCatagory() != null)
 					BeanUtils.copyProperties(businessUnit.getBusinessCatagory(), businessCatagoryBean);
 				businessUnitbean.setBusinessCatagory(businessCatagoryBean);
-				if (businessUnit.getBankDetails() != null)
+				if (businessUnit.getBankDetails()!= null)
 					BeanUtils.copyProperties(businessUnit.getBankDetails(), bankDetailsBean);
 				businessUnitbean.setBankDetails(bankDetailsBean);
 				businessUnitBeanList.add(businessUnitbean);

@@ -38,11 +38,11 @@ public class InvestmentDetails {
 	@Column(name="total_invest_amount")
 	private Integer totalInvestAmount;
 	
-	@Description("total amount invest by owner")
+	@Description("total amount invested by owner")
 	@Column(name="amount_invest")
 	private Integer amountInvest;
 	
-	@Description("our own percentage")
+	@Description("Percentage owned by us")
 	@Column(name="percentage")
 	private Integer percentage;
 	
@@ -50,16 +50,19 @@ public class InvestmentDetails {
 	@Column(name="duration")
 	private String duration;
 	
-	@Description("only League who  type is investment")
+	@Description("only Leadger who  type is investment")
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "league_id")
-	private League payTo;
+	@JoinColumn(name = "ledger_id")
+	private Ledger payTo;
 	
 	@Column(name="description")
 	private String description;
 	
 	@Column(name="active")
 	private String active;
+	
+	@Column(name="remark")
+	private String remark;
 	
 	@Column(name = "created_by")
 	private String createdBy;

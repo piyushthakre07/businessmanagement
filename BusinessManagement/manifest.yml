@@ -1,0 +1,5 @@
+applications:  - name:  BusinessManagement
+path: target\BusinessManagement-0.0.1-SNAPSHOT.jar
+memory: 1G
+services:
+- mysqldb
